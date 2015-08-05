@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -22,7 +21,6 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity implements OnItemClickListener{
 
-	private AsyncTask task;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,49 +40,6 @@ public class MainActivity extends Activity implements OnItemClickListener{
         ListView listView = (ListView) findViewById(R.id.list_parent);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
-//        LogUtils.d("testtest");
-//        return;
-//        
-//        @LogAnno(value = "")
-//        String text = "";
-//        task = new AsyncTask<Object, Integer, Bitmap>() {
-//
-//			@Override
-//			protected Bitmap doInBackground(Object... params) {
-//				URL url = null;
-//				try {
-//					url = new URL("http://image.baidu.com/i?tn=download&word=download&ie=utf8&fr=detail&url=http%3A%2F%2Fh.hiphotos.baidu.com%2Fbaike%2Fw%253D268%2Fsign%3Dcc1fa1384d4a20a4311e3bc1a8529847%2F342ac65c1038534374fb7e0b9113b07ecb8065380cd790d8.jpg&thumburl=http%3A%2F%2Fimg5.imgtn.bdimg.com%2Fit%2Fu%3D490382050%2C2805470275%26fm%3D21%26gp%3D0.jpg");
-//				} catch (MalformedURLException e) {
-//					e.printStackTrace();
-//				}
-//				if(null == url)
-//					return null;
-//				try {
-//					URLConnection conn = url.openConnection();
-//					conn.setUseCaches(true);
-//					conn.setRequestProperty("Content-Type", "image/jpeg");
-//					Object obj = conn.getContent();
-//					
-//					if(obj instanceof Bitmap){
-//						return (Bitmap) obj;
-//					}
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//				return null;
-//			}
-//        	
-//			@Override
-//			protected void onPostExecute(Bitmap result) {
-//				super.onPostExecute(result);
-//				if(null == result || isCancelled() || isFinishing())
-//					return;
-//				findViewById(R.id.tv_back).setBackgroundDrawable(new BitmapDrawable(getResources(), result));;
-//				
-//			}
-//		};
-//        
-//		task.execute(null, null);
     }
 
     class MyAdapter extends ArrayAdapter<String>{
@@ -118,12 +73,6 @@ public class MainActivity extends Activity implements OnItemClickListener{
     
     @Override
     protected void onDestroy() {
-    	if(null != task && task.isCancelled()){
-    		try {
-    			task.cancel(true);
-			} catch (Exception e) {
-			}
-    	}
     	super.onDestroy();
     }
 
